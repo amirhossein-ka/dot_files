@@ -1,0 +1,43 @@
+#! /bin/sh
+
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+bspc monitor -d I II III IV V VI VII 
+
+bspc config border_width         0.5
+bspc config window_gap           5 
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc rule -a Chromium desktop='^2'
+bspc rule -a mplayer2 state=floating
+bspc rule -a Kupfer.py focus=on
+bspc rule -a Screenkey manage=off
+bspc rule -a firefox desktop='^3'
+bspc rule -a pcmanfm desktop='^4'
+
+
+$HOME/.config/polybar/launch.sh --hack &
+
+#feh --bg-scale "$(< "${HOME}/.cache/wal/wal")" &
+
+feh --bg-scale Pictures/Walpappers/bg_17.jpg 
+
+redshift -x 
+redshift -O 4500 &
+
+set -U SXHKD_SHELL /usr/bin/bash &
+
+export QT_QPA_PLATFORMTHEME=qt5ct &
+
+picom -b --focus-exclude "x = 0 && y = 0 && override_redirect = true" &
+
+setxkbmap -layout "us,ir" -option "grp:alt_shift_toggle" &
+
+
+
+
+
