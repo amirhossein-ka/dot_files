@@ -6,9 +6,12 @@
 super + Return
 	kitty
 
+super + shift + Return
+	st
+
 # program launcher
-super + @space
-	~/.config/polybar/hack/scripts/launcher.sh
+super + space
+	rofi -show drun
 
 # make sxhkd reload its configuration files:
 super + Escape
