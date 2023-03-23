@@ -11,7 +11,7 @@ super + shift + Return
 
 # program launcher
 super + space
-	rofi -show drun
+	rofi -show drun -show-icons
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -87,6 +87,8 @@ super + {o,i}
 super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
 
+alt + {_,shift + }{1-9,0}
+    bspc {desktop -f,node -d} '^{1-9,10}'
 #
 # preselect
 #
@@ -123,8 +125,12 @@ super + alt + shift + {h,j,k,l}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
-# take screenshot
+# rotate 90 degrees
+super + {r}
+    bspc node @parent -R 90
 
+
+# take screenshot
 ctrl + Print
 	maim -s | xclip -selection clipboard -t image/png
 
@@ -134,3 +140,21 @@ Print
 # Shutdown
 super + ctrl + {s}
 	shutdown -h now
+
+# mpd stuff
+ctrl + {p}
+    mpc toggle
+
+ctrl + {Next, Prior}
+    mpc {next,prev}
+
+
+# make screen go brrrr (black)
+alt + {l}
+    sleep 0.1;xset dpms force off
+
+XF86AudioRaiseVolume
+    amixer sset Master 5%+
+
+XF86AudioLowerVolume
+    amixer sset Master 5%-
